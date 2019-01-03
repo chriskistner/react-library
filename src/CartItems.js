@@ -19,7 +19,7 @@ export default function CartItems(props) {
         )
 
     return (
-        <div className="container">
+        <div className="container border">
             <h1>Your Cart</h1>
         <div className="collection-item">
             <div className="row border text-white bg-dark">

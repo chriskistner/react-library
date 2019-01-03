@@ -8,6 +8,19 @@ export default class LibraryHeader extends Component {
         }
     }
 
+    handleChange = (event) => {
+        this.setState({
+          [event.target.name]: event.target.value
+        })
+      }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.getBook(this.state.bookID)
+      }
+
+
+
     render() {
         return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,9 +33,6 @@ export default class LibraryHeader extends Component {
                     <li className="nav-item active">
                         <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Admin</a>
-                    </li>
                     <li className="nav-item dropdown">
                         <select name="filterBy" id="itemSelect" className="form-control" value={this.state.itemSelect} onChange={this.props.handleFilter}>
                             <option selected disabled>Filter Library By...</option>
@@ -31,9 +41,9 @@ export default class LibraryHeader extends Component {
                         </select>
                     </li>
                 </ul>
-            <form className="form-inline my-2 my-lg-0" onSubmit={this.props.getBook}>
+            <form className="form-inline my-2 my-lg-0" onSubmit={this.handleSubmit}>
                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search Books by ID</button>  
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" value={this.state.value} aria-label="Search"/>
+                <input className="form-control mr-sm-2" type="search" placeholder="Search" name="bookID" value={this.state.bookID} onChange={this.handleChange} aria-label="Search"/>
             </form>
             </div>
         </nav>

@@ -30,8 +30,9 @@ getLibrary = async () => {
   getBook = async (book) => {
     try {
       const response = await axios.get(`http://localhost:8082/api/books/${book}`);
+      console.log(response.data)
       this.setState({
-        library: response.data
+        library: [response.data]
       })
     } catch(err) {
       console.log(err)
@@ -83,17 +84,30 @@ handleFilter = (event) => {
   render() {
     return (
       <div className="App">
-        <div className="container">
-          <LibraryHeader handleFilter={this.handleFilter} getBook={this.getBook}/>
-          <div className="row border">
-            <div className="col-8 border">
+        <div className="container bg-light border">
+          <div className="row">
+            <div className="col-12">
+              <LibraryHeader handleFilter={this.handleFilter} getBook={this.getBook}/>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-8">
               <BookListings addToCart={this.addToCart} library = {this.state.library} filterBy={this.state.filterBy} />
             </div>
-            <div className="col-4 border">
+            <div className="col-4">
               <CartItems shoppingCart={this.state.shoppingCart} dropFromCart={this.dropFromCart}/>
             </div>
           </div>
-          <LibraryFooter/>
+          <div className="row bg-dark text-light">
+            <div className="col">
+              <h3>Admin Section</h3>
+            </div>
+          </div>
+            <div className="row text-light">
+              <div className="col">
+                <LibraryFooter/>
+              </div>
+            </div>
         </div>
       </div>
     );
