@@ -39,9 +39,11 @@ handleFilter = (event) => {
     console.log('check render')
     return (
       <div className="App">
-        <LibraryHeader handleFilter={this.handleFilter}/>
-        <BookListings library = {this.state.library} filterBy={this.state.filterBy} />
-        <LibraryFooter/>
+        <div className="container">
+          <LibraryHeader handleFilter={this.handleFilter}/>
+          <BookListings library = {this.state.library} filterBy={this.state.filterBy} />
+          <LibraryFooter/>
+        </div>
       </div>
     );
   }
