@@ -27,6 +27,17 @@ getLibrary = async () => {
         }
   }
 
+  getBook = async (book) => {
+    try {
+      const response = await axios.get(`http://localhost:8082/api/books/${book}`);
+      this.setState({
+        library: response.data
+      })
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
   getCart = async () => {
     try {
       const response = await axios.get('http://localhost:8082/api/books');
@@ -73,7 +84,7 @@ handleFilter = (event) => {
     return (
       <div className="App">
         <div className="container">
-          <LibraryHeader handleFilter={this.handleFilter}/>
+          <LibraryHeader handleFilter={this.handleFilter} getBook={this.getBook}/>
           <div className="row border">
             <div className="col-8 border">
               <BookListings addToCart={this.addToCart} library = {this.state.library} filterBy={this.state.filterBy} />

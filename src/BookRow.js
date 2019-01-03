@@ -4,7 +4,7 @@ import './BookRow.css'
 export default function BookRow({title, subtitle, author, published, publisher, pages, description, website, price, id, addBook}) {
     return (
         <div className="collection-item">
-        <div className="row border">
+        <div className="row border text-white bg-dark">
         <div className="col-md-6"><h4>Title:</h4></div>
             <div className="col-md-3"><h4>Author:</h4></div>
             <div className="col-md-3"><h4>Publisher:</h4></div>
@@ -29,7 +29,7 @@ export default function BookRow({title, subtitle, author, published, publisher, 
             </div>
             <div className="col-md-3">
             <span><b>Add to Cart:</b></span>
-            <span><button onClick={() => addBook(id)}>$ {price}.00</button></span>
+            <span><button className="btn btn-success" onClick={() => addBook(id)}>$ {price}.00</button></span>
             </div>
         </div>
     </div>

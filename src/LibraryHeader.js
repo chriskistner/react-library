@@ -31,9 +31,9 @@ export default class LibraryHeader extends Component {
                         </select>
                     </li>
                 </ul>
-            <form className="form-inline my-2 my-lg-0">
+            <form className="form-inline my-2 my-lg-0" onSubmit={this.props.getBook}>
                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search Books by ID</button>  
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                <input className="form-control mr-sm-2" type="search" placeholder="Search" value={this.state.value} aria-label="Search"/>
             </form>
             </div>
         </nav>

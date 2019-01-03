@@ -14,7 +14,7 @@ export default function CartItems(props) {
     
         const cartHasStuff = (
         <div className="row border text-white bg-dark">
-            <div className="col">TOTAL $ {total}.00</div>
+            <div className="col">Total $ {total}.00</div>
         </div>
         )
 
@@ -23,8 +23,8 @@ export default function CartItems(props) {
             <h1>Your Cart</h1>
         <div className="collection-item">
             <div className="row border text-white bg-dark">
-                <div className="col-md-8">PRODUCT NAME</div>
-                <div className="col-md-4">PRODUCT PRICE</div>
+                <div className="col-md-8">Book Name</div>
+                <div className="col-md-4">Price</div>
             </div> 
         </div>
         {
