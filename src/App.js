@@ -41,7 +41,14 @@ handleFilter = (event) => {
       <div className="App">
         <div className="container">
           <LibraryHeader handleFilter={this.handleFilter}/>
-          <BookListings library = {this.state.library} filterBy={this.state.filterBy} />
+          <div className="row border">
+            <div className="col-8 border">
+              <BookListings library = {this.state.library} filterBy={this.state.filterBy} />
+            </div>
+            <div className="col-4 border">
+
+            </div>
+          </div>
           <LibraryFooter/>
         </div>
       </div>
