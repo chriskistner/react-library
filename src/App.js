@@ -48,6 +48,16 @@ addToCart = async (book) => {
   }
 }
 
+dropFromCart = async (book) => {
+  try {
+    await axios.patch(`http://localhost:8082/api/books/cart/remove/${book}`);
+    this.getCart();
+
+  } catch(err) {
+    console.log(err)
+  }
+}
+
 componentDidMount() {
     this.getLibrary();
     this.getCart();
@@ -69,7 +79,7 @@ handleFilter = (event) => {
               <BookListings addToCart={this.addToCart} library = {this.state.library} filterBy={this.state.filterBy} />
             </div>
             <div className="col-4 border">
-              <CartItems shoppingCart={this.state.shoppingCart}/>
+              <CartItems shoppingCart={this.state.shoppingCart} dropFromCart={this.dropFromCart}/>
             </div>
           </div>
           <LibraryFooter/>

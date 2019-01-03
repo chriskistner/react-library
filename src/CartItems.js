@@ -3,7 +3,6 @@ import CartItem from './CartItem'
 
 export default function CartItems(props) {
     const cart = props.shoppingCart;
-    console.log(cart)
 
     const cartIsEmpty = ( 
         <div className="row border">
@@ -27,7 +26,7 @@ export default function CartItems(props) {
             </div> 
         </div>
         {
-            cart.map(item => <CartItem book={item}/>)
+            cart.map(item => <CartItem book={item} dropBook={() => props.dropFromCart(item.id)}/>)
     }
     {
         cart.length === 0 ? cartIsEmpty :  cartHasStuff
