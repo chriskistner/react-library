@@ -3,6 +3,8 @@ import CartItem from './CartItem'
 
 export default function CartItems(props) {
     const cart = props.shoppingCart;
+    const costs = cart.map(target => target.price);
+    const total = costs.reduce((a, b) => a + b, 0);
 
     const cartIsEmpty = ( 
         <div className="row border">
@@ -12,7 +14,7 @@ export default function CartItems(props) {
     
         const cartHasStuff = (
         <div className="row border text-white bg-dark">
-            <div className="col">TOTAL $</div>
+            <div className="col">TOTAL $ {total}.00</div>
         </div>
         )
 
