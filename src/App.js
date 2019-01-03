@@ -50,6 +50,7 @@ addToCart = async (book) => {
 
 componentDidMount() {
     this.getLibrary();
+    this.getCart();
 };
 
 handleFilter = (event) => {
