@@ -3,6 +3,7 @@ import './App.css';
 import LibraryHeader from './LibraryHeader.js';
 import LibraryFooter from './LibraryFooter.js';
 import BookListings from './BookListings.js';
+import CartItems from './CartItems.js'
 import axios from 'axios';
 
 export default class App extends Component {
@@ -10,19 +11,30 @@ export default class App extends Component {
     super(props) 
     this.state = {
       library: [],
-      filterBy: 'name'
+      filterBy: 'name',
+      shoppingCart: []
     }
   }
 
 getLibrary = async () => {
     try {
         const response = await axios.get('http://localhost:8082/api/books');
+        console.log(response.data)
         this.setState({
             library: response.data
         })
         } catch(err) {
             console.log(err)
         }
+}
+
+addToCart = async () => {
+  try {
+
+
+  } catch(err) {
+    console.log(err)
+  }
 }
 
 componentDidMount() {
@@ -46,7 +58,7 @@ handleFilter = (event) => {
               <BookListings library = {this.state.library} filterBy={this.state.filterBy} />
             </div>
             <div className="col-4 border">
-
+              <CartItems shoppingCart={this.state.shoppingCart}/>
             </div>
           </div>
           <LibraryFooter/>
