@@ -1,7 +1,9 @@
 import React from 'react';
+import CartItem from './CartItem'
 
 export default function CartItems(props) {
     const cart = props.shoppingCart;
+    console.log(cart)
 
     const cartIsEmpty = ( 
         <div className="row border">
@@ -25,7 +27,7 @@ export default function CartItems(props) {
             </div> 
         </div>
         {
-    //   props.items.map(item => <CartItem cartitem={item}  deleteitem={props.handleDelete} />)
+            cart.map(item => <CartItem book={item}/>)
     }
     {
         cart.length === 0 ? cartIsEmpty :  cartHasStuff
