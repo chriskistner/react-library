@@ -1,7 +1,7 @@
 import React from 'react';
 import './BookRow.css'
 
-export default function BookRow({title, subtitle, author, published, publisher, pages, description, website, price, inCart, id}) {
+export default function BookRow({title, subtitle, author, published, publisher, pages, description, website, price, id, addBook}) {
     return (
         <div className="collection-item">
         <div className="row border">
@@ -29,7 +29,7 @@ export default function BookRow({title, subtitle, author, published, publisher, 
             </div>
             <div className="col-md-3">
             <span><b>Add to Cart:</b></span>
-            <span><button>$ {price}.00</button></span>
+            <span><button onClick={() => addBook(id)}>$ {price}.00</button></span>
             </div>
         </div>
     </div>
