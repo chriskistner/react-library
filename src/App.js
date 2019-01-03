@@ -1,28 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import LibraryHeader from './LibraryHeader.js';
+import LibraryFooter from './LibraryFooter.js';
+import BookListings from './BookListings.js';
+import axios from 'axios';
 
-class App extends Component {
+export default class App extends Component {
+  constructor(props) {
+    super(props) 
+    this.state = {
+      library: [],
+      filterBy: 'name'
+    }
+  }
+
+getLibrary = async () => {
+    try {
+        const response = await axios.get('http://localhost:8082/api/books');
+        this.setState({
+            library: response.data
+        })
+        } catch(err) {
+            console.log(err)
+        }
+}
+
+componentDidMount() {
+    this.getLibrary()
+};
+
+handleFilter = (event) => {
+  this.setState({
+    filterBy: event.target.value
+  })
+}
+
   render() {
+    console.log('check render')
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <LibraryHeader handleFilter={this.handleFilter}/>
+        <BookListings library = {this.state.library} filterBy={this.state.filterBy} />
+        <LibraryFooter/>
       </div>
     );
   }
 }
 
-export default App;
