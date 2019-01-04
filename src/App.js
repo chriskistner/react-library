@@ -127,12 +127,12 @@ componentDidMount() {
               <AddNewBook addBook={this.addBook} />
             </div>
             <div className="col-6">
-              <EditBook />
+              <EditBook editBook={this.editBook} />
             </div>
           </div>
             <div className="row text-light">
               <div className="col">
-                <LibraryFooter editBook={this.editBook} getBook={this.getBook}/>
+                <LibraryFooter />
               </div>
             </div>
         </div>
