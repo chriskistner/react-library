@@ -84,18 +84,16 @@ addBook = async (book) => {
   } catch(err) {
     console.log(err)
   }
-}
+};
 
-editBook = async (book) => {
+editBook = async (id, book) => {
   try {
-    await axios.put('http://localhost:8082/api/books', book);
+    await axios.put(`http://localhost:8082/api/books/${id}`, book);
     this.getLibrary();
-
   } catch(err) {
     console.log(err)
   }
-}
-
+};
 
 componentDidMount() {
   this.getLibrary();

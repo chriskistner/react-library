@@ -6,20 +6,18 @@ export default class LibraryHeader extends Component {
         this.state = {
 
         }
-    }
+    };
 
     handleChange = (event) => {
         this.setState({
           [event.target.name]: event.target.value
         })
-      }
+      };
 
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.getBook(this.state.bookID)
-      }
-
-
+      };
 
     render() {
         return (

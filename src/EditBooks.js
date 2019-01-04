@@ -31,7 +31,8 @@ export default class EditBook extends Component {
                 bookDesc: response.data.description,
                 bookSite: response.data.website,
                 bookPrice: response.data.price
-            })
+            });
+            console.log(this.state)
           }catch(err) {
               console.log(err)
           }
@@ -39,19 +40,19 @@ export default class EditBook extends Component {
 
       handleUpdate = (event) => {
         event.preventDefault();
-        const newBook = {
-            title: this.state.newBookTitle,
-            subtitle: this.state.newBookSubtitle,
-            author: this.state.newBookAuthor,
-            published: this.state.newBookPublished,
-            publisher: this.state.newBookPublisher,
-            pages: this.state.newBookPages,
-            description: this.state.newBookDesc,
-            website: this.state.newBookSite,
-            price: this.state.newBookPrice
+        const bookID = this.state.id;
+        const updateBook = {
+            title: this.state.bookTitle,
+            subtitle: this.state.bookSubtitle,
+            author: this.state.bookAuthor,
+            published: this.state.bookPublished,
+            publisher: this.state.bookPublisher,
+            pages: this.state.bookPages,
+            description: this.state.bookDesc,
+            website: this.state.bookSite,
         }
         document.getElementById('newBookForm').reset()
-        this.props.addBook(newBook);
+        this.props.editBook(bookID, updateBook);
       };
 
     render() {
@@ -109,7 +110,7 @@ export default class EditBook extends Component {
                             <input type="url" class="form-control" name="newBookSite" value={this.state.bookSite} onChange={this.handleChange} placeholder="Enter Website" required />
                         </div>
                         <div className="col">
-                            <input type="number" class="form-control" name="newBookPrice" value={this.state.bookPrice} onChange={this.handleChange} placeholder="Enter Price" required />
+                            <input type="number" class="form-control" name="newBookPrice" value={this.state.bookPrice} onChange={this.handleChange} placeholder="Enter Price" disabled />
                         </div> 
                     </div>
                     <br />
