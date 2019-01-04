@@ -4,7 +4,8 @@ import LibraryHeader from './LibraryHeader.js';
 import LibraryFooter from './LibraryFooter.js';
 import BookListings from './BookListings.js';
 import CartItems from './CartItems.js';
-import AddNewBook from './AddNewBook.js'
+import AddNewBook from './AddNewBook.js';
+import EditBook from './EditBooks.js';
 import axios from 'axios';
 
 export default class App extends Component {
@@ -116,6 +117,9 @@ componentDidMount() {
           <div className="row">
             <div className="col-6">
               <AddNewBook addBook={this.addBook} />
+            </div>
+            <div className="col-6">
+              <EditBook />
             </div>
           </div>
             <div className="row text-light">

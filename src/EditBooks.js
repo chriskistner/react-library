@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class AddNewBook extends Component {
+export default class EditBook extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -34,8 +34,20 @@ export default class AddNewBook extends Component {
     render() {
         return (
             <div className="col">
+                <form>
+                    <div className="form-row">
+                        <div className="col">
+                            <h3>Edit Book</h3>
+                        </div>
+                        <div className="col">
+                            <input className="form-control mr-sm-2" type="search" placeholder="Enter ID" name="bookID" value={this.state.bookID} onChange={this.handleChange} aria-label="Search"/>
+                        </div>
+                        <div className="col">
+                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Load</button>
+                        </div>
+                    </div>
+                </form>
                 <form onSubmit={this.handleSubmit} id="newBookForm">
-                    <h3>Enter New Book</h3>
                     <div class="form-row">
                         <div className="col">
                             <input type="text" class="form-control" name="newBookTitle" value={this.state.newBookTitle} onChange={this.handleChange} placeholder="Enter Title" required />
@@ -80,7 +92,7 @@ export default class AddNewBook extends Component {
                     <br />
                     <div class="form-row">
                         <div className="col">
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Add Book</button>
+                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Update Book</button>
                         </div>
                     </div>
                 </form>
