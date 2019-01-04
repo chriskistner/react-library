@@ -3,7 +3,8 @@ import './App.css';
 import LibraryHeader from './LibraryHeader.js';
 import LibraryFooter from './LibraryFooter.js';
 import BookListings from './BookListings.js';
-import CartItems from './CartItems.js'
+import CartItems from './CartItems.js';
+import AddNewBook from './AddNewBook.js'
 import axios from 'axios';
 
 export default class App extends Component {
@@ -14,7 +15,7 @@ export default class App extends Component {
       filterBy: 'name',
       shoppingCart: []
     }
-  }
+  };
 
 getLibrary = async () => {
     try {
@@ -25,19 +26,18 @@ getLibrary = async () => {
         } catch(err) {
             console.log(err)
         }
-  }
+  };
 
   getBook = async (book) => {
     try {
       const response = await axios.get(`http://localhost:8082/api/books/${book}`);
-      console.log(response.data)
       this.setState({
         library: [response.data]
       })
     } catch(err) {
       console.log(err)
     }
-  }
+  };
 
   getCart = async () => {
     try {
@@ -49,7 +49,7 @@ getLibrary = async () => {
       } catch(err) {
           console.log(err)
       }
-  }
+  };
 
 addToCart = async (book) => {
   try { 
@@ -58,7 +58,7 @@ addToCart = async (book) => {
   } catch(err) {
     console.log(err)
   }
-}
+};
 
 dropFromCart = async (book) => {
   try {
@@ -68,11 +68,6 @@ dropFromCart = async (book) => {
   } catch(err) {
     console.log(err)
   }
-}
-
-componentDidMount() {
-    this.getLibrary();
-    this.getCart();
 };
 
 handleFilter = (event) => {
@@ -80,6 +75,11 @@ handleFilter = (event) => {
     filterBy: event.target.value
   })
 }
+
+componentDidMount() {
+  this.getLibrary();
+  this.getCart();
+};
 
   render() {
     return (
@@ -101,6 +101,11 @@ handleFilter = (event) => {
           <div className="row bg-dark text-light">
             <div className="col">
               <h3>Admin Section</h3>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-6">
+              <AddNewBook />
             </div>
           </div>
             <div className="row text-light">
