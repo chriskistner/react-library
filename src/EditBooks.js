@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+const url = process.env.REACT_APP_URL
 
 export default class EditBook extends Component {
     constructor(props) {
@@ -19,7 +20,7 @@ export default class EditBook extends Component {
           event.preventDefault();
           console.log(this.state.bookID)
           try {
-            const response = await axios.get(`http://localhost:8082/api/books/${this.state.bookID}`);
+            const response = await axios.get(`${url}/books/${this.state.bookID}`);
             this.setState({
                 id: response.data.id,
                 bookTitle: response.data.title,

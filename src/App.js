@@ -8,6 +8,8 @@ import AddNewBook from './AddNewBook.js';
 import EditBook from './EditBooks.js';
 import axios from 'axios';
 
+const url = process.env.REACT_APP_URL
+
 export default class App extends Component {
   constructor(props) {
     super(props) 
@@ -20,7 +22,7 @@ export default class App extends Component {
 
 getLibrary = async () => {
     try {
-        const response = await axios.get('http://localhost:8082/api/books');
+        const response = await axios.get(`${url}/books`);
         this.setState({
             library: response.data
         })
@@ -31,7 +33,7 @@ getLibrary = async () => {
 
   getBook = async (book) => {
     try {
-      const response = await axios.get(`http://localhost:8082/api/books/${book}`);
+      const response = await axios.get(`${url}/books/${book}`);
       this.setState({
         library: [response.data]
       })
@@ -42,7 +44,7 @@ getLibrary = async () => {
 
   getCart = async () => {
     try {
-      const response = await axios.get('http://localhost:8082/api/books');
+      const response = await axios.get(`${url}/books`);
       const yourCart = response.data.filter(book => book.inCart === true);
       this.setState({
           shoppingCart: yourCart || []
@@ -54,7 +56,7 @@ getLibrary = async () => {
 
 addToCart = async (book) => {
   try { 
-    await axios.patch(`http://localhost:8082/api/books/cart/add/${book}`);
+    await axios.patch(`${url}/books/cart/add/${book}`);
     this.getCart();
   } catch(err) {
     console.log(err)
@@ -63,7 +65,7 @@ addToCart = async (book) => {
 
 dropFromCart = async (book) => {
   try {
-    await axios.patch(`http://localhost:8082/api/books/cart/remove/${book}`);
+    await axios.patch(`${url}/books/cart/remove/${book}`);
     this.getCart();
 
   } catch(err) {
@@ -79,7 +81,7 @@ handleFilter = (event) => {
 
 addBook = async (book) => {
   try {
-    await axios.post('http://localhost:8082/api/books', book);
+    await axios.post(`${url}/books`, book);
     this.getLibrary();
   } catch(err) {
     console.log(err)
@@ -88,7 +90,7 @@ addBook = async (book) => {
 
 editBook = async (id, book) => {
   try {
-    await axios.put(`http://localhost:8082/api/books/${id}`, book);
+    await axios.put(`${url}/books/${id}`, book);
     this.getLibrary();
   } catch(err) {
     console.log(err)
