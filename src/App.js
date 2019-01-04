@@ -13,7 +13,7 @@ export default class App extends Component {
     super(props) 
     this.state = {
       library: [],
-      filterBy: 'name',
+      filterBy: 'title',
       shoppingCart: []
     }
   };
@@ -111,7 +111,7 @@ componentDidMount() {
           </div>
           <div className="row">
             <div className="col-8">
-              <BookListings addToCart={this.addToCart} library = {this.state.library} filterBy={this.state.filterBy} />
+              <BookListings addToCart={this.addToCart} library={this.state.library} filterBy={this.state.filterBy} />
             </div>
             <div className="col-4">
               <CartItems shoppingCart={this.state.shoppingCart} dropFromCart={this.dropFromCart}/>

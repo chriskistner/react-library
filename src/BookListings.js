@@ -9,6 +9,8 @@ export default class BookListings extends Component {
     }
 
     render() {
+        console.log('Render list', this.props.library);
+        
         const displayedBooks = this.props.library.sort((a, b) => a[this.props.filterBy] > b[this.props.filterBy] ? 1 : -1);
         return (
             <div className="container">

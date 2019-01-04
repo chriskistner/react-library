@@ -36,7 +36,7 @@ export default class EditBook extends Component {
           }catch(err) {
               console.log(err)
           }
-      }
+      };
 
       handleUpdate = (event) => {
         event.preventDefault();
@@ -50,12 +50,12 @@ export default class EditBook extends Component {
             pages: this.state.bookPages,
             description: this.state.bookDesc,
             website: this.state.bookSite,
-        }
+        };
 
         document.getElementById('newBookForm').reset()
         this.props.editBook(bookID, updateBook);
         this.setState({
-            id: '',
+            bookID: '',
             bookTitle: '',
             bookSubtitle: '',
             bookAuthor: '',
@@ -136,5 +136,5 @@ export default class EditBook extends Component {
                 <br />
             </div>
         )
-    }
+    };
 }
