@@ -74,7 +74,17 @@ handleFilter = (event) => {
   this.setState({
     filterBy: event.target.value
   })
+};
+
+addBook = async (book) => {
+  try {
+    await axios.post('http://localhost:8082/api/books', book);
+    this.getLibrary();
+  } catch(err) {
+    console.log(err)
+  }
 }
+
 
 componentDidMount() {
   this.getLibrary();
@@ -105,12 +115,12 @@ componentDidMount() {
           </div>
           <div className="row">
             <div className="col-6">
-              <AddNewBook />
+              <AddNewBook addBook={this.addBook} />
             </div>
           </div>
             <div className="row text-light">
               <div className="col">
-                <LibraryFooter/>
+                <LibraryFooter />
               </div>
             </div>
         </div>
