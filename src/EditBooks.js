@@ -6,15 +6,20 @@ export default class EditBook extends Component {
         this.state = {
 
         }
-    }
+    };
 
     handleChange = (event) => {
         this.setState({
           [event.target.name]: event.target.value
         })
-      }
+      };
 
       handleSubmit = (event) => {
+          event.preventDefault();
+          
+      }
+
+      handleUpdate = (event) => {
         event.preventDefault();
         const newBook = {
             title: this.state.newBookTitle,
@@ -29,7 +34,7 @@ export default class EditBook extends Component {
         }
         document.getElementById('newBookForm').reset()
         this.props.addBook(newBook);
-      }
+      };
 
     render() {
         return (
@@ -47,7 +52,7 @@ export default class EditBook extends Component {
                         </div>
                     </div>
                 </form>
-                <form onSubmit={this.handleSubmit} id="newBookForm">
+                <form onSubmit={this.handleUpdate} id="newBookForm">
                     <div class="form-row">
                         <div className="col">
                             <input type="text" class="form-control" name="newBookTitle" value={this.state.newBookTitle} onChange={this.handleChange} placeholder="Enter Title" required />

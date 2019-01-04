@@ -27,8 +27,20 @@ export default class AddNewBook extends Component {
             website: this.state.newBookSite,
             price: this.state.newBookPrice
         }
-        document.getElementById('newBookForm').reset()
         this.props.addBook(newBook);
+        
+        this.setState({
+            newBookTitle: '',
+            newBookSubtitle: '',
+            newBookAuthor: '',
+            newBookPublished: '',
+            newBookPublisher: '',
+            newBookPages: 0,
+            newBookDesc: '',
+            newBookSite: '',
+            newBookPrice: 0
+
+        })
       }
 
     render() {
