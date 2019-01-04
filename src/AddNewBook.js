@@ -71,7 +71,7 @@ export default class AddNewBook extends Component {
                             <input type="text" class="form-control" name="newBookPublisher" value={this.state.newBookPublisher} onChange={this.handleChange} placeholder="Enter Publisher" required />
                         </div>
                         <div className="col">
-                            <input type="date" class="form-control" name="newBookPublished" value={this.state.newBookPublished} onChange={this.handleChange} placeholder="Publication Date" required />
+                            <input type="text" class="form-control" name="newBookPublished" value={this.state.newBookPublished} onChange={this.handleChange} placeholder="Publication Date" required />
                         </div>
                     </div>
                     <br />

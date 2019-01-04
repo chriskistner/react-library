@@ -86,6 +86,16 @@ addBook = async (book) => {
   }
 }
 
+editBook = async (book) => {
+  try {
+    await axios.put('http://localhost:8082/api/books', book);
+    this.getLibrary();
+
+  } catch(err) {
+    console.log(err)
+  }
+}
+
 
 componentDidMount() {
   this.getLibrary();
@@ -124,7 +134,7 @@ componentDidMount() {
           </div>
             <div className="row text-light">
               <div className="col">
-                <LibraryFooter />
+                <LibraryFooter editBook={this.editBook} getBook={this.getBook}/>
               </div>
             </div>
         </div>

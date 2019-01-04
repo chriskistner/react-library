@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class EditBook extends Component {
     constructor(props) {
@@ -14,9 +15,26 @@ export default class EditBook extends Component {
         })
       };
 
-      handleSubmit = (event) => {
+      handleSubmit = async (event) => {
           event.preventDefault();
-          
+          console.log(this.state.bookID)
+          try {
+            const response = await axios.get(`http://localhost:8082/api/books/${this.state.bookID}`);
+            this.setState({
+                id: response.data.id,
+                bookTitle: response.data.title,
+                bookSubtitle: response.data.subtitle,
+                bookAuthor: response.data.author,
+                bookPublished: response.data.published,
+                bookPublisher: response.data.publisher,
+                bookPages: response.data.pages,
+                bookDesc: response.data.description,
+                bookSite: response.data.website,
+                bookPrice: response.data.price
+            })
+          }catch(err) {
+              console.log(err)
+          }
       }
 
       handleUpdate = (event) => {
@@ -39,7 +57,7 @@ export default class EditBook extends Component {
     render() {
         return (
             <div className="col">
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <div className="form-row">
                         <div className="col">
                             <h3>Edit Book</h3>
@@ -55,43 +73,43 @@ export default class EditBook extends Component {
                 <form onSubmit={this.handleUpdate} id="newBookForm">
                     <div class="form-row">
                         <div className="col">
-                            <input type="text" class="form-control" name="newBookTitle" value={this.state.newBookTitle} onChange={this.handleChange} placeholder="Enter Title" required />
+                            <input type="text" class="form-control" name="newBookTitle" value={this.state.bookTitle} onChange={this.handleChange} placeholder="Enter Title" required />
                         </div>
                         <div className="col">
-                            <input type="text" class="form-control" name="newBookSubtitle" value={this.state.newBookSubtitle} onChange={this.handleChange} placeholder="Sub Title" required />
-                        </div>
-                    </div>
-                    <br />
-                    <div class="form-row">
-                        <div className="col">
-                            <input type="text" class="form-control" name="newBookAuthor" value={this.state.newBookAuthor} onChange={this.handleChange} placeholder="Enter Author" required />
-                        </div>
-                        <div className="col">
-                            <input type="number" class="form-control" name="newBookPages" value={this.state.newBookPages} onChange={this.handleChange} placeholder="# of Pages" required />
+                            <input type="text" class="form-control" name="newBookSubtitle" value={this.state.bookSubtitle} onChange={this.handleChange} placeholder="Sub Title" required />
                         </div>
                     </div>
                     <br />
                     <div class="form-row">
                         <div className="col">
-                            <input type="text" class="form-control" name="newBookPublisher" value={this.state.newBookPublisher} onChange={this.handleChange} placeholder="Enter Publisher" required />
+                            <input type="text" class="form-control" name="newBookAuthor" value={this.state.bookAuthor} onChange={this.handleChange} placeholder="Enter Author" required />
                         </div>
                         <div className="col">
-                            <input type="date" class="form-control" name="newBookPublished" value={this.state.newBookPublished} onChange={this.handleChange} placeholder="Publication Date" required />
-                        </div>
-                    </div>
-                    <br />
-                    <div class="form-row">
-                        <div className="col">
-                            <input type="text" class="form-control" name="newBookDesc" value={this.state.newBookDesc} onChange={this.handleChange} placeholder="Enter Description" required />
+                            <input type="number" class="form-control" name="newBookPages" value={this.state.bookPages} onChange={this.handleChange} placeholder="# of Pages" required />
                         </div>
                     </div>
                     <br />
                     <div class="form-row">
                         <div className="col">
-                            <input type="url" class="form-control" name="newBookSite" value={this.state.newBookSite} onChange={this.handleChange} placeholder="Enter Website" required />
+                            <input type="text" class="form-control" name="newBookPublisher" value={this.state.bookPublisher} onChange={this.handleChange} placeholder="Enter Publisher" required />
                         </div>
                         <div className="col">
-                            <input type="number" class="form-control" name="newBookPrice" value={this.state.newBookPrice} onChange={this.handleChange} placeholder="Enter Price" required />
+                            <input type="text" class="form-control" name="newBookPublished" value={this.state.bookPublished} onChange={this.handleChange} placeholder="Publication Date" required />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-row">
+                        <div className="col">
+                            <input type="text" class="form-control" name="newBookDesc" value={this.state.bookDesc} onChange={this.handleChange} placeholder="Enter Description" required />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-row">
+                        <div className="col">
+                            <input type="url" class="form-control" name="newBookSite" value={this.state.bookSite} onChange={this.handleChange} placeholder="Enter Website" required />
+                        </div>
+                        <div className="col">
+                            <input type="number" class="form-control" name="newBookPrice" value={this.state.bookPrice} onChange={this.handleChange} placeholder="Enter Price" required />
                         </div> 
                     </div>
                     <br />
