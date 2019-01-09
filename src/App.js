@@ -8,7 +8,7 @@ import AddNewBook from './AddNewBook.js';
 import EditBook from './EditBooks.js';
 import axios from 'axios';
 
-const url = process.env.REACT_APP_URL
+const url = process.env.REACT_APP_URL;
 
 export default class App extends Component {
   constructor(props) {
